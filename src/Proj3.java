@@ -6,6 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/*
+ * @file: Proj3.java
+ * @description: This program imports the random numbers csv and runs a variety of sorting algorithms on those values. It compares the performance of these sorting algorithms based on how long they take.
+ * @author: Andrew Young
+ * @date: November 11th 2024
+ */
+
 public class Proj3 {
     // Sorting Method declarations
 
