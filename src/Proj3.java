@@ -13,10 +13,11 @@ import java.util.Scanner;
  * @date: November 11th 2024
  */
 
+//@Class Proj3: This class stores all of the contents of the file
 public class Proj3 {
     // Sorting Method declarations
 
-    // Merge Sort
+    // Merge Sort, this part is the called portion to implement the sorting
     public static <T extends Comparable> void mergeSort(ArrayList<T> a, int left, int right) {
 
         if (left < right){
@@ -34,7 +35,7 @@ public class Proj3 {
         }
 
     }
-
+    // Merge, this function is a helper function for mergeSort and serves to perform the merges required in merge sort
     public static <T extends Comparable> void merge(ArrayList<T> a, int left, int mid, int right) {
 
         // Find the size of the two arrays that are going to be sorted
@@ -89,7 +90,7 @@ public class Proj3 {
 
     }
 
-    // Quick Sort
+    // Quick Sort, this function is the called portion in the file to begin the sorting
     public static <T extends Comparable> void quickSort(ArrayList<T> a, int left, int right) {
         // Finish Me
         if (left < right){
@@ -103,7 +104,7 @@ public class Proj3 {
 
 
     }
-
+    // Partition, this is the helper function for quickSort that sorts the split parts of the array
     public static <T extends Comparable> int partition (ArrayList<T> a, int left, int right) {
         T pivot = a.get(right); // Choosing the last element as the pivot
         int i = left - 1; // Pointer for the smaller portion
@@ -127,14 +128,14 @@ public class Proj3 {
 
         return i + 1; // Return the index of the pivot
     }
-
+    // Basic swap function to perform for sorting
     static <T> void swap(ArrayList<T> a, int i, int j) {
         T temp = a.get(i);
         a.set(i, a.get(j));
         a.set(j, temp);
     }
 
-    // Heap Sort
+    // Heap Sort, the function that is called in the file to begin the sort
     public static <T extends Comparable> void heapSort(ArrayList<T> a, int left, int right) {
         // Define the starting index for this iteration of the heapSort call
         int numNodes = right - left + 1;
@@ -157,7 +158,7 @@ public class Proj3 {
 
 
     }
-
+    // Helper function for heapify that arranges the array into a heap structure
     public static <T extends Comparable> void heapify (ArrayList<T> a, int left, int right) {
         // Initialize the left argument as the root for this heap at first
         int largest = left;
@@ -286,19 +287,75 @@ public class Proj3 {
         String[] parts;
 
         // Now declare all the array options
-        ArrayList<Integer> sortedArray = new ArrayList<>();
-        ArrayList<Integer> shuffledArray = new ArrayList<>();
-        ArrayList<Integer> reverseSortArray = new ArrayList<>();
+        ArrayList<BaseballBatter> sortedArray = new ArrayList<>();
+        ArrayList<BaseballBatter> shuffledArray = new ArrayList<>();
+        ArrayList<BaseballBatter> reverseSortArray = new ArrayList<>();
 
-        // Now build out the array with the contents from the file
+        // Declare all the player variables outside here
+        String playerID;
+        String yearID;
+        int stint;
+        String teamID;
+        String lgID;
+        int G;
+        int AB;
+        int R;
+        int H;
+        int Doubles;
+        int Triples;
+        int HR;
+        int RBI;
+        int SB;
+        int CS;
+        int BB;
+        int SO;
+        int IBB;
+        int HBP;
+        int SH;
+        int SF;
+        int GIDP;
+        String nameGiven;
+        String masterID;
+        // For loop to iterate through the csv and all the BaseballBatter player classes into an ArrayList
         for (int i = 0; i < numLines; i++){
+            //Read in the current line for a player in the csv
             currLine = inputFileNameScanner.nextLine();
             // Now split the values based on the commas to get all the variables
-            parts = currLine.split(","); // In this case there are not multiple parts, but this makes the program more robust for other data type
-            // Add the values to all three distinct arrays
-            sortedArray.add(i, Integer.parseInt(parts[0]));
-            shuffledArray.add(i, Integer.parseInt(parts[0]));
-            reverseSortArray.add(i, Integer.parseInt(parts[0]));
+            parts = currLine.split(",");
+
+            playerID = parts[0];
+            yearID = parts[1];
+            stint = Integer.parseInt(parts[2]);
+            teamID = parts[3];
+            lgID = parts[4];
+            G = Integer.parseInt(parts[5]);
+            AB = Integer.parseInt(parts[6]);
+            R = Integer.parseInt(parts[7]);
+            H = Integer.parseInt(parts[8]);
+            Doubles = Integer.parseInt(parts[9]);
+            Triples = Integer.parseInt(parts[10]);
+            HR = Integer.parseInt(parts[11]);
+            RBI = Integer.parseInt(parts[12]);
+            SB = Integer.parseInt(parts[13]);
+            CS = Integer.parseInt(parts[14]);
+            BB = Integer.parseInt(parts[15]);
+            SO = Integer.parseInt(parts[16]);
+            IBB = Integer.parseInt(parts[17]);
+            HBP = Integer.parseInt(parts[18]);
+            SH = Integer.parseInt(parts[19]);
+            SF = Integer.parseInt(parts[20]);
+            GIDP = Integer.parseInt(parts[21]);
+            nameGiven = parts[22];
+            masterID = parts[23];
+            // Now add the player to the array list
+            sortedArray.add(new BaseballBatter(playerID, yearID, stint, teamID, lgID, G, AB, R, H, Doubles,
+                    Triples, HR, RBI, SB, CS, BB, SO, IBB, HBP, SH, SF, GIDP, nameGiven, masterID));
+            shuffledArray.add(new BaseballBatter(playerID, yearID, stint, teamID, lgID, G, AB, R, H, Doubles,
+                    Triples, HR, RBI, SB, CS, BB, SO, IBB, HBP, SH, SF, GIDP, nameGiven, masterID));
+            reverseSortArray.add(new BaseballBatter(playerID, yearID, stint, teamID, lgID, G, AB, R, H, Doubles,
+                    Triples, HR, RBI, SB, CS, BB, SO, IBB, HBP, SH, SF, GIDP, nameGiven, masterID));
+
+
         }
 
         // Now perform the respective ordering for these arrays

@@ -104,6 +104,11 @@ Bubble Sort, Merge Sort, Quick Sort, and Heap Sort running time (shuffled):
 Bubble Sort, Merge Sort, Quick Sort, and Heap Sort running time (reversed):
 ![Reverse Times (ms) Based on Input Size.png](src%2FReverse%20Times%20%28ms%29%20Based%20on%20Input%20Size.png)
 
+In comparing the bubble sort and the odd even transposition sort, we can see what when run sequentially they have the same
+run time for the sorted and reversed arrays. However, for the shuffled arrays the transposition sort performs marginally 
+faster in sequential operation. This demonstrates how if the transposition sorting were to be run in parallel it would be 
+significantly faster than the standard bubble sort.
+
 Bubble Sort and Odd-Even Transposition Sort comparison (already sorted):
 ![Sorted Comparisons Based on Input Size.png](src%2FSorted%20Comparisons%20Based%20on%20Input%20Size.png)
 
